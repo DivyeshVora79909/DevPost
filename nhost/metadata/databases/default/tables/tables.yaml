@@ -1,0 +1,6 @@
+- "!include public_tenants.yaml"
+- "!include public_authz_tuples.yaml"
+- "!include public_authz_model.yaml"
+- "!include public_authz_effective_graph.yaml"
+- "!include public_crm_contacts.yaml"
+- "!include public_invitations.yaml"

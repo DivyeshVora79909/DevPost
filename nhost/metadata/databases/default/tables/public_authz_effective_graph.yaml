@@ -1,0 +1,16 @@
+table:
+  name: authz_effective_graph
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - object_id
+        - relation
+        - subject_id
+      filter:
+        _and:
+          - tenant_id:
+              _eq: X-Hasura-Tenant-Id
+          - subject_id:
+              _eq: X-Hasura-User-Id

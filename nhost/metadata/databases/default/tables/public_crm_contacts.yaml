@@ -1,0 +1,29 @@
+table:
+  name: crm_contacts
+  schema: public
+object_relationships:
+  - name: authz_check
+    using:
+      manual_configuration:
+        remote_table:
+          name: authz_effective_graph
+          schema: public
+        column_mapping:
+          id: object_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+        - created_at
+      filter:
+        _and:
+          - tenant_id:
+              _eq: X-Hasura-Tenant-Id
+          - authz_check:
+              _and:
+                - subject_id:
+                    _eq: X-Hasura-User-Id
+                - relation:
+                    _eq: viewer

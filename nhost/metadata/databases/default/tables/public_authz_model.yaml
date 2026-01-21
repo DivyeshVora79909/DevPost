@@ -1,0 +1,3 @@
+table:
+  name: authz_model
+  schema: public
